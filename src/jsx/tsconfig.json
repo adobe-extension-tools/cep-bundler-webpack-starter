@@ -6,8 +6,6 @@
         "allowJs": true,
         "strict": true,
         "noLib": true,
-        "jsx": "react",
-        "jsxFactory": "createUI",
         "types": [
             "AfterEffects/2018"
         ],

@@ -11,12 +11,17 @@
       "--allow-file-access",
       "--enable-nodejs",
       "--mixed-content"
-    ]
+    ],
+    "debugInProduction": true
   },
   "scripts": {
-    "watch": "webpack --config extendscript.config.js --watch & webpack --config cep.config.js --watch & wait",
-    "start": "webpack --config extendscript.config.js --watch & webpack-dev-server --config cep.config & wait",
-    "build": "webpack --config extendscript.config.js --display verbose && webpack --config cep.config.js --display verbose"
+    "watch:extendscript": "webpack --config extendscript.config.js --watch",
+    "watch:cep": "webpack-dev-server --config cep.config.js",
+    "start": "npm-run-all --parallel watch:**",
+    "build:extendscript": "webpack --config extendscript.config.js --display verbose",
+    "build:jsxbin": "node $HOME/.vscode/extensions/adobe.extendscript-*/public-scripts/exportToJSX.js -n ./dist/extendscript.js",
+    "build:cep": "webpack --config cep.config.js --display verbose",
+    "build": "npm-run-all --serial build:**"
   },
   "author": "Koen Schmeets",
   "license": "MIT",
@@ -25,10 +30,11 @@
   },
   "devDependencies": {
     "@types/node": "^11.13.4",
-    "cep-bundler-webpack": "0.0.9",
+    "cep-bundler-webpack": "0.0.18",
     "cep-interface": "^0.5.1",
     "extendscript-es5-shim-ts": "0.0.1",
-    "types-for-adobe": "github:adobe-extension-tools/types-for-adobe",
+    "npm-run-all": "^4.1.5",
+    "types-for-adobe": "github:pravdomil/types-for-adobe",
     "typescript": "^3.4.3"
   }
 }
