@@ -17,20 +17,18 @@
   "scripts": {
     "watch:extendscript": "webpack --config extendscript.config.js --watch",
     "watch:cep": "webpack-dev-server --config cep.config.js",
-    "start": "npm-run-all --parallel watch:**",
+    "start": "export IS_DEV=1 && npm-run-all --parallel watch:**",
     "build:extendscript": "webpack --config extendscript.config.js --display verbose",
     "build:jsxbin": "node $HOME/.vscode/extensions/adobe.extendscript-*/public-scripts/exportToJSX.js -n ./dist/extendscript.js",
-    "build:cep": "webpack --config cep.config.js --display verbose",
+    "build:cep": "webpack --config cep.config.js --display verbose && rm ./dist/extendscript.js",
     "build": "npm-run-all --serial build:**"
   },
   "author": "Koen Schmeets",
   "license": "MIT",
-  "dependencies": {
-    "rambda": "^2.4.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^11.13.4",
-    "cep-bundler-webpack": "0.0.18",
+    "cep-bundler-webpack": "0.0.37",
     "cep-interface": "^0.5.1",
     "extendscript-es5-shim-ts": "0.0.1",
     "npm-run-all": "^4.1.5",

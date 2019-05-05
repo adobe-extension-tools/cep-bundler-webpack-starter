@@ -2,13 +2,15 @@
 
 import './style.css'
 import './console'
-import './loadExtendscript'
+import './extendscript'
 
 declare global {
   interface NodeModule {
     hot: any
   }
 }
+
+document.body.innerHTML = 'hello, world!'
 
 if (module.hot) {
   module.hot.accept(() => {})
