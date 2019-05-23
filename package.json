@@ -10,7 +10,7 @@
       "--allow-file-access-from-files",
       "--allow-file-access",
       "--enable-nodejs",
-      "--mixed-content"
+      "--mixed-context"
     ],
     "debugInProduction": true
   },
